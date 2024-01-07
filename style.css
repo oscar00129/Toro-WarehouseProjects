@@ -1,0 +1,54 @@
+@font-face {
+    font-family: Free3pf9;
+    src:url("/3OF9_0.TTF");
+}
+
+table{
+    text-align: center;
+    page-break-after: always;
+}
+
+.toro_logo{
+    width: 100px;
+}
+
+.part_number {
+    font-family: Arial;
+    font-size: 160px;
+    font-weight: bold;
+}
+
+.barcode {
+    font-family: Free3pf9;
+    font-size: 72px;
+}
+
+.quantity {
+    font-family: Arial;
+    font-size: 72px;
+    font-weight: bold;
+}
+
+#printableArea{
+    display: hidden;
+}
+
+@media print{
+    .no_print{
+        display: none;
+    }
+
+    #printableArea{
+        display: block;
+        width: 100%;
+        background-color: blue;
+        justify-content:center;
+        align-items:center;
+        height: 100%;
+    }
+
+    #printableArea > *{
+        background-color: yellow;
+        width: 100%;
+    }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Part Numbers Printer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="LOGO.jfif" type="image/x-icon">
+</head>
+<body>
+    <div id="app">
+        <div class="no_print">
+            <h1>Multiple Part Numbers Printer</h1>
+            <button @click="addMaterial()">Add Another Material</button>
+            <button @click="print()">Print All</button>
+            <br><br>
+            <label for="selDepartment">Area: </label>
+            <select name="selDepartment" id="selDepartment" v-model="select_data.selected">
+                <option v-for="area in select_data.areas" :value="area">{{area}}</option>
+            </select>
+            
+            <br><br>
+            <div class="row" v-for="(material, index) in materials">
+                <label>Part Number: </label>
+                <input type="text" placeholder="Part Number" v-model="material.part_number">
+
+                <label>Quantity: </label>
+                <input type="number" placeholder="Quantity" v-model="material.quantity">
+
+                <label>Pages: </label>
+                <input type="number" placeholder="Pages" v-model="material.pages" max="35" min="0" @change="changePages(index)" @input="changePages(index)">
+                <button @click="removeItem(index)">Remove Item</button>
+            </div>
+        </div>
+        
+        <div id="printableArea">
+            <table  v-for="material in materials_w_pages">
+                <template v-if="material.part_number">
+                    <tr>
+                        <td><img class="toro_logo" src="LOGO.jfif" alt="TORO_LOGO"></td>
+                    </tr>
+                    <tr v-if="select_data.selected != ''">
+                        <td class="quantity">{{select_data.selected}}</td>
+                    </tr>
+                    <tr>
+                        <td class="part_number">{{material.part_number}}</td>
+                    </tr>
+                    <tr>
+                        <td class="barcode">{{material.part_number}}</td>
+                    </tr>
+                    <tr>
+                        <td class="quantity">QTY..</td>
+                    </tr>
+                    <tr>
+                        <td class="quantity" v-if="material.quantity > 1">{{material.quantity}} PCS</td>
+                        <td class="quantity" v-else>{{material.quantity}} PIECE</td>
+                    </tr>
+                    <tr>
+                        <td class="barcode">{{material.quantity}}</td>
+                    </tr>
+                </template>
+                
+            </table>
+        </div>
+        
+    </div>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>
