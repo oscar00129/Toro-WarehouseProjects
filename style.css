@@ -29,6 +29,11 @@ table{
     font-weight: bold;
 }
 
+.cursive {
+    font-style: italic;
+    font-size: 12px;
+}
+
 #printableArea{
     display: hidden;
 }
