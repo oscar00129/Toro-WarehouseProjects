@@ -65,6 +65,9 @@ const app = Vue.createApp({
             }else if(this.materials[index].pages < 0){
                 this.materials[index].pages = 0;
             }
+        },
+        removeAll(){
+            this.materials = [];
         }
     }
 })

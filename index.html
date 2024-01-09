@@ -13,6 +13,7 @@
             <h1>Multiple Part Numbers Printer</h1>
             <button @click="addMaterial()">Add Another Material</button>
             <button @click="print()">Print All</button>
+            <button class="red-button" @click="removeAll()">Remove All Part Numbers</button>
             <br><br>
             <label for="selDepartment">Area: </label>
             <select name="selDepartment" id="selDepartment" v-model="select_data.selected">
