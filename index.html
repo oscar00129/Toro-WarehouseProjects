@@ -31,6 +31,7 @@
                 <input type="number" placeholder="Pages" v-model="material.pages" max="35" min="0" @change="changePages(index)" @input="changePages(index)">
                 <button @click="removeItem(index)">Remove Item</button>
             </div>
+            <hr>
         </div>
         
         <div id="printableArea">
@@ -46,7 +47,7 @@
                         <td class="part_number">{{material.part_number}}</td>
                     </tr>
                     <tr>
-                        <td class="barcode">{{material.part_number}}</td>
+                        <td class="barcode">{{"*" + material.part_number + "*"}}</td>
                     </tr>
                     <tr>
                         <td class="quantity">QTY..</td>
@@ -56,15 +57,13 @@
                         <td class="quantity" v-else>{{material.quantity}} PIECE</td>
                     </tr>
                     <tr>
-                        <td class="barcode">{{material.quantity}}</td>
+                        <td class="barcode">{{"*" + material.quantity + "*"}}</td>
                     </tr>
                 </template>
-                
             </table>
         </div>
         
     </div>
-    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="javascript.js"></script>
 </body>
