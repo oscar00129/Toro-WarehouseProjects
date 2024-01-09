@@ -8,6 +8,11 @@ table{
     page-break-after: always;
 }
 
+button > svg {
+    width: 12px;
+    height: 10px;
+}
+
 .toro_logo{
     width: 100px;
 }
