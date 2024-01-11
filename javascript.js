@@ -55,6 +55,12 @@ const app = Vue.createApp({
             
             window.print();
         },
+        duplicateItem(index){
+            this.materials.splice(index + 1, 0, {
+                part_number: this.materials[index].part_number,
+                quantity: this.materials[index].quantity,
+                pages: this.materials[index].pages});
+        },
         removeItem(index){
             this.materials.splice(index, 1);
         },
