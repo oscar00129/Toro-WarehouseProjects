@@ -3,9 +3,30 @@
     src:url("/3OF9_0.TTF");
 }
 
+* {
+    font-family: Arial;
+}
+
+.toolbar{
+    display: flex;
+    justify-content: start;
+}
+
+.right{
+    margin-left: auto;
+}
+
 table{
     text-align: center;
     page-break-after: always;
+}
+
+.row {
+    display: flex;
+}
+
+.grey-row {
+    background-color: rgb(240, 240, 240);
 }
 
 button > svg {
