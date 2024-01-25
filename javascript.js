@@ -13,11 +13,17 @@ const app = Vue.createApp({
                     'REC3'
                 ]
             },
+            shift_data: {
+                selected: '1ST',
+                shifts: [
+                    '1ST', '2ND', '3RD'
+                ]
+            },
             includeDate: true
         }
     },
     mounted(){
-        this.materials.push({ part_number: '', quantity: 0, pages: 1 });
+        this.materials.push({ part_number: '', quantity: 0, pages: 1, parcial: false });
         this.getCurrentDate();
     },
     watch: {
@@ -39,7 +45,8 @@ const app = Vue.createApp({
             this.materials.push({
                 part_number: '',
                 quantity: 0,
-                pages: 1
+                pages: 1,
+                parcial: false
             });
         },
         print(){
@@ -61,7 +68,9 @@ const app = Vue.createApp({
             this.materials.splice(index + 1, 0, {
                 part_number: this.materials[index].part_number,
                 quantity: this.materials[index].quantity,
-                pages: this.materials[index].pages});
+                pages: this.materials[index].pages,
+                parcial: this.materials[index].parcial
+            });
         },
         removeItem(index){
             this.materials.splice(index, 1);
