@@ -12,11 +12,13 @@ const app = Vue.createApp({
                     'EMBA',
                     'REC3'
                 ]
-            }
+            },
+            includeDate: true
         }
     },
     mounted(){
         this.materials.push({ part_number: '', quantity: 0, pages: 1 });
+        this.getCurrentDate();
     },
     watch: {
         materials: {
@@ -74,6 +76,10 @@ const app = Vue.createApp({
         },
         removeAll(){
             this.materials = [];
+        },
+        getCurrentDate(){
+            let date = new Date();
+            return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
         }
     }
 })

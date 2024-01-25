@@ -38,6 +38,9 @@
             <select name="selDepartment" id="selDepartment" v-model="select_data.selected">
                 <option v-for="area in select_data.areas" :value="area">{{area}}</option>
             </select>
+
+            <label for="cbDate">Include Date?:</label>
+            <input type="checkbox" id="cbDate" name="cbDate" v-model="includeDate"/>
             
             <br><br>
             <div class="row" :class="index % 2 == 0 ? 'grey-row' : ''" v-for="(material, index) in materials">
@@ -90,12 +93,16 @@
                     <tr>
                         <td class="barcode">{{"*" + material.quantity + "*"}}</td>
                     </tr>
+                    <tr v-if="includeDate">
+                        <td class="small-text">{{getCurrentDate()}}</td>
+                    </tr>
                 </template>
             </table>
         </div>
         
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="modules/helper.js"></script>
     <script src="javascript.js"></script>
 </body>
 </html>
