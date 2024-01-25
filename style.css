@@ -44,6 +44,30 @@ button > svg {
     font-weight: bold;
 }
 
+.small-text{
+    font-family: Arial;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.small-medium-text{
+    font-family: Arial;
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.medium-text{
+    font-family: Arial;
+    font-size: 52px;
+    font-weight: bold;
+}
+
+.medium-high-text{
+    font-family: Arial;
+    font-size: 56px;
+    font-weight: bold;
+}
+
 .barcode {
     font-family: Free3pf9;
     font-size: 72px;
@@ -52,12 +76,6 @@ button > svg {
 .quantity {
     font-family: Arial;
     font-size: 72px;
-    font-weight: bold;
-}
-
-.small-text{
-    font-family: Arial;
-    font-size: 36px;
     font-weight: bold;
 }
 

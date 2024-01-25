@@ -82,8 +82,11 @@
                     <tr>
                         <td><img class="toro_logo" src="LOGO.jfif" alt="TORO_LOGO"></td>
                     </tr>
+                    <tr>
+                        <td class="small-text">{{shift_data.selected}} SHIFT</td>
+                    </tr>
                     <tr v-if="select_data.selected != ''">
-                        <td class="quantity">{{select_data.selected}} ({{shift_data.selected}})</td>
+                        <td class="small-medium-text">{{select_data.selected}}</td>
                     </tr>
                     <tr>
                         <td class="part_number">{{material.part_number}}</td>
@@ -92,12 +95,12 @@
                         <td class="barcode">{{"*" + material.part_number + "*"}}</td>
                     </tr>
                     <tr>
-                        <td v-if="material.parcial" class="quantity">PARCIAL QTY</td>
-                        <td v-else class="quantity">QTY</td>
+                        <td v-if="material.parcial" class="medium-text">PARCIAL QTY:</td>
+                        <td v-else class="medium-text">QTY:</td>
                     </tr>
                     <tr>
-                        <td class="quantity" v-if="material.quantity > 1">{{material.quantity}} PCS</td>
-                        <td class="quantity" v-else>{{material.quantity}} PIECE</td>
+                        <td class="medium-text" v-if="material.quantity > 1">{{material.quantity}} PCS</td>
+                        <td class="medium-text" v-else>{{material.quantity}} PIECE</td>
                     </tr>
                     <tr>
                         <td class="barcode">{{"*" + material.quantity + "*"}}</td>
