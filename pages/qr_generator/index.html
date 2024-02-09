@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de QRs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="/resources/img/LOGO.jfif" type="image/x-icon">
+</head>
+<body>
+    <div id="app">
+        <div class="no_print">
+
+            <div class="navbar">
+                <div>
+                    <a href="/pages/main_menu/">
+                        <img src="/resources/img/toro-logo-RGB-for-digital.png" alt="">
+                    </a>
+                </div>
+                <div class="drop-div">
+                    Projects
+                    <div class="dropdown-div">
+                        <a href="/pages/identifications_printer/">Part Number Printer</a>
+                        <a href="/pages/qr_generator/">QR Generator</a>
+                    </div>
+                </div>
+            </div>
+
+            <h1>Generador de QRs</h1>
+            <p>Ingrese su texto en el siguiente cuadro: <i>(<b>Nota:</b> Cada salto de línea será un QR distinto)</i></p>
+            <textarea name="taText" id="taText" cols="30" rows="10" v-model="text" placeholder="Ingrese su texto en este cuadro: (Nota: Cada salto de línea será un QR distinto)"></textarea>
+            <br>
+            <button class="button" @click="btnGenerate_Click()">Generate</button>
+
+            Tamaño: 
+            <input type="number" name="iWidth" id="iWidth" v-model="qrSize.width" class="inputSize" @input="iSize_Changed"/>
+            x
+            <input type="number" name="iHeight" id="iHeight" v-model="qrSize.height" class="inputSize" @input="iSize_Changed"/>
+            
+            Tamaño texto:
+            <input type="number" name="iTextSize" id="iTextSize" v-model="textSize" class="inputSize"/>
+            px.
+
+            <br>
+
+            <label for="cbText">Incluir texto? </label>
+            <input type="checkbox" name="cbText" id="cbText" v-model="includeText">
+        </div>
+        
+        <div id="qrContainer"></div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="/modules/qrcode.min.js"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>

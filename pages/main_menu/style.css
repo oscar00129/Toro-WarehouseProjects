@@ -1,0 +1,73 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.bg_img {
+    background-image: url("/resources/img/bg.jpg");
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+    height: 100vh;
+    width: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#app {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    text-align: center;
+    padding: 2rem;
+    background-color: rgba(110, 159, 223, 0.315);
+
+    box-shadow: .5rem .5rem 5px rgba(29, 32, 70, 0.192);
+}
+
+img {
+    width: 300px;
+    margin-bottom: 2rem;
+}
+
+p {
+    font-family: Arial;
+    font-size: 52px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: white;
+    text-shadow: .2rem .2rem 5px rgba(37, 38, 94, 0.274);
+}
+
+li {
+    font-family: Arial;
+    text-decoration: none;
+    font-size: 28px;
+    padding: 1rem;
+    list-style-type: none;
+    transition: .3s;
+    color: rgb(210, 213, 250);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    width: 100%;
+}
+
+li:hover {
+    font-size: 32px;
+    color: rgb(0, 0, 185);
+}
+
+.cursive {
+    font-style: italic;
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: normal;
+    color: rgb(216, 231, 231);
+}

@@ -1,22 +1,82 @@
 @font-face {
     font-family: Free3pf9;
-    src:url("/3OF9_0.TTF");
+    src:url("/resources/fonts/3OF9_0.TTF");
 }
 
 * {
     font-family: Arial;
+    padding: 0;
+    margin: 0;
 }
 
-.toolbar{
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: 1rem;
+
+    box-shadow: 0px 1px 10px rgba(139, 133, 133, 0.397);
+}
+
+.navbar div {
+    padding: .5rem;
+    font-size: 20px;
+    font-family: Arial;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.navbar > div:hover {
+    background-color: rgba(128, 128, 128, 0.45);
+    color: white;
+}
+
+.navbar img {
+    width: 80px;
+}
+
+.dropdown-div {
+    background-color: grey;
+    color: white;
+    
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+
+    display: none;
+}
+
+.dropdown-div a {
+    text-decoration: none !important;
+    color: inherit;
+
+    transition: .3s;
+}
+
+.drop-div:hover .dropdown-div {
+    display: flex;
+}
+
+.dropdown-div > a:hover {
+    font-size: 24px;
+    color: rgb(223, 223, 223);
+}
+
+/* END NAVBAR */
+
+.toolbar {
     display: flex;
     justify-content: start;
 }
 
-.right{
+.right {
     margin-left: auto;
 }
 
-table{
+table {
     text-align: center;
     page-break-after: always;
 }
@@ -34,7 +94,7 @@ button > svg {
     height: 10px;
 }
 
-.toro_logo{
+.toro_logo {
     width: 110px;
 }
 
@@ -44,25 +104,31 @@ button > svg {
     font-weight: bold;
 }
 
-.small-text{
+.part_number_small {
+    font-family: Arial;
+    font-size: 140px;
+    font-weight: bold;
+}
+
+.small-text {
     font-family: Arial;
     font-size: 36px;
     font-weight: bold;
 }
 
-.small-medium-text{
+.small-medium-text {
     font-family: Arial;
     font-size: 48px;
     font-weight: bold;
 }
 
-.medium-text{
+.medium-text {
     font-family: Arial;
-    font-size: 52px;
+    font-size: 58px;
     font-weight: bold;
 }
 
-.medium-high-text{
+.medium-high-text {
     font-family: Arial;
     font-size: 56px;
     font-weight: bold;
@@ -91,8 +157,13 @@ button > svg {
     font-size: 12px;
 }
 
-#printableArea{
+#printableArea {
     display: hidden;
+}
+
+.pd1 {
+    padding: 1rem;
+    padding-top: .5rem;
 }
 
 @media print{
