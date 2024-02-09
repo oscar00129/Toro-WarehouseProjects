@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multiple Part Numbers Printer</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="/resources/img/LOGO.jfif" type="image/x-icon">
+    <link rel="shortcut icon" href="../../resources/img/LOGO.jfif" type="image/x-icon">
 </head>
 <body>
     <div id="app">
         <div class="no_print">
             <div class="navbar">
                 <div>
-                    <a href="/pages/main_menu/">
-                        <img src="/resources/img/toro-logo-RGB-for-digital.png" alt="">
+                    <a href="../../pages/main_menu/">
+                        <img src="../../resources/img/toro-logo-RGB-for-digital.png" alt="">
                     </a>
                 </div>
                 <div class="drop-div">
                     Projects
                     <div class="dropdown-div">
-                        <a href="/pages/identifications_printer/">Part Number Printer</a>
-                        <a href="/pages/qr_generator/">QR Generator</a>
+                        <a href="../../pages/identifications_printer/">Part Number Printer</a>
+                        <a href="../../pages/qr_generator/">QR Generator</a>
                     </div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
             <table  v-for="material in materials_w_pages">
                 <template v-if="material.part_number">
                     <tr>
-                        <td><img class="toro_logo" src="/resources/img/toro-logo-RGB-for-digital.png" alt="TORO_LOGO"></td>
+                        <td><img class="toro_logo" src="../../resources/img/toro-logo-RGB-for-digital.png" alt="TORO_LOGO"></td>
                     </tr>
                     <tr>
                         <td class="small-text">{{shift_data.selected}} SHIFT</td>
@@ -131,7 +131,7 @@
         
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script src="/modules/helper.js"></script>
+    <script src="../../modules/helper.js"></script>
     <script src="javascript.js"></script>
 </body>
 </html>
