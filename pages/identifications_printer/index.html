@@ -76,7 +76,7 @@
                 <input type="number" placeholder="Quantity" v-model="material.quantity">
 
                 <label>Pages: </label>
-                <input type="number" placeholder="Pages" v-model="material.pages" max="35" min="0" @change="changePages(index)" @input="changePages(index)">
+                <input type="number" placeholder="Pages" v-model="material.pages" max="35" min="0" @change="changePages(index)" @input="(event) => changePages(index, event)">
                 
                 <label for="cbParcial">Parcial?:</label>
                 <input type="checkbox" name="cbParcial" id="cbParcial" v-model="material.parcial">

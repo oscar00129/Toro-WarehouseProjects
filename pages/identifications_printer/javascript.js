@@ -75,7 +75,9 @@ const app = Vue.createApp({
         removeItem(index){
             this.materials.splice(index, 1);
         },
-        changePages(index){
+        changePages(index, event){
+            if(event && event.target) event.target.value = this.materials[index].pages;
+
             this.materials[index].pages = Math.round(this.materials[index].pages);
             if(this.materials[index].pages > 35){
                 this.materials[index].pages = 35;
