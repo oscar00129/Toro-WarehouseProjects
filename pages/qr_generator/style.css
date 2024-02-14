@@ -62,18 +62,63 @@
 
 /* END NAVBAR */
 
+.menu-container {
+    padding: .5rem 1rem 0rem 1rem;
+
+    font-family: Arial;
+}
+
+.horizontal-container {
+    padding: 1rem 0 1rem 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.form {
+    width: 47%;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
 #taText{
     border-width: 1px;
     font-family: Arial;
-    font-size: 20px;
+    font-size: 18px;
+    width: 47%;
+    padding: 1rem;
+}
+
+.input-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#cbText {
+    margin-right: .5rem;
 }
 
 .button{
     border-width: 1px;
-    padding: 1px;
-    border-radius: 4px;
+    padding: .5rem 4rem .5rem 4rem;
+    border-radius: 3px;
+    width: 100%;
+    cursor: pointer;
 }
 
+.button:active {
+    background-color: grey;
+    color: white;
+}
+
+.bugs-or-support {
+    font-weight: lighter;
+    font-style: italic;
+}
 
 .inputSize{
     border-width: 2px;
@@ -83,7 +128,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    margin-top: 2rem;
 }
 
 .QR{

@@ -26,27 +26,44 @@
                 </div>
             </div>
 
-            <h1>Generador de QRs</h1>
-            <p>Ingrese su texto en el siguiente cuadro: <i>(<b>Nota:</b> Cada salto de línea será un QR distinto)</i></p>
-            <textarea name="taText" id="taText" cols="30" rows="10" v-model="text" placeholder="Ingrese su texto en este cuadro: (Nota: Cada salto de línea será un QR distinto)"></textarea>
-            <br>
-            <button class="button" @click="btnGenerate_Click()">Generate</button>
+            <div class="menu-container">
+                <h1>Generador de QRs</h1>
+                <p>Ingrese su texto en el siguiente cuadro: <i>(<b>Nota:</b> Cada salto de línea será un QR distinto)</i></p>
 
-            Tamaño: 
-            <input type="number" name="iWidth" id="iWidth" v-model="qrSize.width" class="inputSize" @input="iSize_Changed"/>
-            x
-            <input type="number" name="iHeight" id="iHeight" v-model="qrSize.height" class="inputSize" @input="iSize_Changed"/>
-            
-            Tamaño texto:
-            <input type="number" name="iTextSize" id="iTextSize" v-model="textSize" class="inputSize"/>
-            px.
+                <div class="horizontal-container">
+                    <textarea name="taText" id="taText" cols="30" rows="10" v-model="text" placeholder="Ingrese su texto en este cuadro: (Nota: Cada salto de línea será un QR distinto)"></textarea>
+                    <div class="form">
+                        <div class="input-row">
+                            Tamaño QR:
+                            <div class="input-pixel">
+                                <input type="number" name="iWidth" id="iWidth" v-model="qrSize" class="inputSize"/>
+                                pixeles.
+                            </div>
+                        </div>
 
-            <br>
+                        <div class="input-row">
+                            Tamaño texto:
+                            <div class="input-pixel">
+                                <input type="number" name="iTextSize" id="iTextSize" v-model="textSize" class="inputSize"/>
+                                pixeles.
+                            </div>
+                        </div>
 
-            <label for="cbText">Incluir texto? </label>
-            <input type="checkbox" name="cbText" id="cbText" v-model="includeText">
+                        <div class="input-cb-row">
+                            <input type="checkbox" name="cbText" id="cbText" v-model="includeText">
+                            <label for="cbText">Incluir texto?  </label>
+                        </div>
+
+                        <button class="button" @click="btnGenerate_Click()">Generar</button>
+
+                        <p class="bugs-or-support">
+                            For bugs or support: Oscar.CastilloRamirez@toro.com
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        
+
         <div id="qrContainer"></div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

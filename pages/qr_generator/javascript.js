@@ -2,10 +2,7 @@ const app = Vue.createApp({
     data() {
         return {
             text: "",
-            qrSize: {
-                width: 128,
-                height: 128
-            },
+            qrSize: 128,
             textSize: 12,
             includeText: true
         }
@@ -45,14 +42,10 @@ const app = Vue.createApp({
 
                 new QRCode(document.getElementById(newId), {
                     text: line,
-                    width: this.qrSize.width,
-                    height: this.qrSize.height
+                    width: this.qrSize,
+                    height: this.qrSize
                 });
             });
-        },
-        iSize_Changed(evt){
-            this.qrSize.width = evt.target.value;
-            this.qrSize.height = evt.target.value;
         }
     }
 })
