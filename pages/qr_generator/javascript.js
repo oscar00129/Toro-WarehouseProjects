@@ -13,7 +13,12 @@ const app = Vue.createApp({
         //new QRCode(document.getElementById("qrcode"), "A100");
     },
     watch: {
-        
+        qrSize(newVal) {
+            if(newVal > 720) this.qrSize = 720;
+        }, 
+        textSize(newVal) {
+            if(newVal > 120) this.textSize = 120;
+        }
     },
     methods:{
         btnGenerate_Click(){
@@ -25,26 +30,28 @@ const app = Vue.createApp({
             }
 
             texts.forEach(line => {
-                let newDiv = document.createElement("div");
-                let newId = line.replace(" ", "_").toLowerCase() + Math.round(Math.random() * 80000);
-                newDiv.id = newId;
-                newDiv.className = "QR";
-
-                if(this.includeText) {
-                    let nameQr = document.createElement("p");
-                    nameQr.className = "nameQr";
-                    nameQr.innerHTML = line;
-                    nameQr.style.fontSize = `${this.textSize}px`;
-                    newDiv.appendChild(nameQr);
+                if(line.replace(" ", "") != "") {
+                    let newDiv = document.createElement("div");
+                    let newId = line.replace(" ", "_").toLowerCase() + Math.round(Math.random() * 80000);
+                    newDiv.id = newId;
+                    newDiv.className = "QR";
+    
+                    if(this.includeText) {
+                        let nameQr = document.createElement("p");
+                        nameQr.className = "nameQr";
+                        nameQr.innerHTML = line;
+                        nameQr.style.fontSize = `${this.textSize}px`;
+                        newDiv.appendChild(nameQr);
+                    }
+    
+                    qrContainer.appendChild(newDiv);
+    
+                    new QRCode(document.getElementById(newId), {
+                        text: line,
+                        width: this.qrSize,
+                        height: this.qrSize
+                    });
                 }
-
-                qrContainer.appendChild(newDiv);
-
-                new QRCode(document.getElementById(newId), {
-                    text: line,
-                    width: this.qrSize,
-                    height: this.qrSize
-                });
             });
         }
     }
