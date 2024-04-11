@@ -8,23 +8,24 @@ const app = Vue.createApp({
                 selected: '',
                 areas: [
                     '',
+                    'AAA3',
+                    'BODEGA',
+                    'CALIDAD',
+                    'CONTEOS',
+                    'DEVO',
                     'EXPANSION',
                     'EMBA',
-                    'REC3'
+                    'IMPULSE',
+                    'REC3',
+                    'TRACSO'
                 ]
-            },
-            shift_data: {
-                selected: '1ST',
-                shifts: [
-                    '1ST', '2ND', '3RD'
-                ]
-            },
-            includeDate: true
+            }
         }
     },
     mounted(){
         this.materials.push({ part_number: '', quantity: 0, pages: 1, parcial: false });
         this.getCurrentDate();
+        this.getCurrentTime();
     },
     watch: {
         materials: {
@@ -91,6 +92,38 @@ const app = Vue.createApp({
         getCurrentDate(){
             let date = new Date();
             return `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
+        },
+        getCurrentTime(){
+            let time = new Date();
+            return `${pad(time.getHours())}:${pad(time.getMinutes())}:${pad(time.getSeconds())}`;
+        },
+        getCurrentShift(){
+            let currentTime = new Date();
+
+            let firstShiftStart = new Date();
+            firstShiftStart.setHours(6,30,0);
+            let firstShiftEnd = new Date();
+            firstShiftEnd.setHours(16,5,0);
+
+            let secondShiftStart = new Date();
+            secondShiftStart.setHours(16,5,1);
+            let secondShiftEnd = new Date();
+            secondShiftEnd.setHours(23,59,59);
+
+            let secondShiftStart2 = new Date();
+            secondShiftStart2.setHours(0,0,0);
+            let secondShiftEnd2 = new Date();
+            secondShiftEnd2.setHours(0,55,0);
+
+            if(currentTime >= firstShiftStart && currentTime <= firstShiftEnd){
+                return "1ST SHIFT";
+            }else if(currentTime >= secondShiftStart && currentTime <= secondShiftEnd){
+                return "2ND SHIFT";
+            }else if(currentTime >= secondShiftStart2 && currentTime <= secondShiftEnd2){
+                return "2ND SHIFT";
+            }else{
+                return "2ND SHIFT OVERTIME";
+            }
         }
     }
 })
