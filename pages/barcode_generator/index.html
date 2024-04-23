@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de QRs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../../resources/img/LOGO.jfif" type="image/x-icon">
+</head>
+<body>
+    <div id="app">
+        <div class="no_print">
+
+            <div class="navbar">
+                <div>
+                    <a href="../../pages/main_menu/">
+                        <img src="../../resources/img/toro-logo-RGB-for-digital.png" alt="">
+                    </a>
+                </div>
+                <div class="drop-div">
+                    Projects
+                    <div class="dropdown-div">
+                        <a href="../../pages/identifications_printer/">Part Number Printer</a>
+                        <a href="../../pages/qr_generator/">QR Generator</a>
+                        <a href="../../pages/barcode_generator/">Barcode Generator</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                <h1>Generador de Codigos de Barras</h1>
+                <p>Ingrese los codigos de barra que desea generar en el siguiente recuadro (Cada linea cuenta como un codigo de barras distinto)</p>
+                <textarea name="txtBarcode" id="txtBarcode" cols="50" rows="10" placeholder="Ingrese su texto aquí" v-model="barcodeText"></textarea>
+            </div>
+        </div>
+
+        <div id="barcodeContainer">
+            <div class="lineContainer" v-for="(line, index) in lines">
+                <div class="barcodeName">{{ line }}</div>
+                <div class="barcode">{{ '*' + line + '*' }}</div>
+                <span v-if="(index + 1) % 3 == 0" class="pageBreak"></span>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../../modules/qrcode.min.js"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>
