@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services Map</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../../resources/img/LOGO.jfif" type="image/x-icon">
+</head>
+<body>
+    <div id="app">
+        <div class="no_print">
+
+            <div class="navbar">
+                <div>
+                    <a href="../../pages/main_menu/">
+                        <img src="../../resources/img/toro-logo-RGB-for-digital.png" alt="">
+                    </a>
+                </div>
+                <div class="drop-div">
+                    Projects
+                    <div class="dropdown-div">
+                        <a href="../../pages/identifications_printer/">Part Number Printer</a>
+                        <a href="../../pages/qr_generator/">QR Generator</a>
+                        <a href="../../pages/barcode_generator/">Barcode Generator</a>
+                        <a href="../../pages/services_map/">Services Map Generator</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-container">
+                
+            </div>
+
+            <div class="control-panel">
+                <h1>Creador de mapas de bodegas de servicios</h1>
+                <div>
+                    <label for="txtServPartNumber">Numero de Servicio:</label>
+                    <input type="text" name="txtServPartNumber" id="txtServPartNumber" placeholder="Ejemplo: 123-4567" v-model="serviceInfo.partNumber">
+                </div>
+                <div>
+                    <label for="txtServQty">Cantidad del Servicio:</label>
+                    <input type="text" name="txtServQty" id="txtServQty" placeholder="Ejemplo: 75" v-model="serviceInfo.qty">
+                </div>
+                <div>
+                    <label for="txtPallets">Cantidad de pallets:</label>
+                    <input type="number" name="txtPallets" id="txtPallets" v-model="palletQty" />
+                </div>
+                <div>
+                    <label for="slServType">Tipo de servicio:</label>
+                    <select name="slServType" id="slServType" v-model="serviceInfo.type.selected">
+                        <option v-for="option in serviceInfo.type.options">
+                            {{ option }}
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <label for="cbScanner">Modo escaner: </label>
+                    <input type="checkbox" name="cbScanner" id="cbScanner" v-model="scannerMode">
+                </div>
+                <div class="pallet-container" v-for="(pallet, index) in pallets">
+                    <h4>Pallet: {{ index + 1 }}</h4>
+                    <div class="material-row" v-for="(material, matIndex) in pallet.partNumbers">
+                        <label>Part Number: </label>
+                        <input type="text" v-model="material.partNumber" @change="inputChanged($event, 'partNumber')"/>
+                        <select disabled="disabled">
+                            <option value="X1">X1</option>
+                        </select>
+                        <label>Qty: </label>
+                        <input type="number" v-model="material.qty" @change="inputChanged($event, 'qty')" />
+                        <button @click="removePartNumber(index, matIndex)" class="removeButton">Remover Numero de Parte</button>
+                    </div>
+                    <button @click="addPartNumber(index)" class="addButton">Agregar otro numero de pallet</button>
+                </div>
+            </div>
+            <hr>
+        </div>
+        
+        <div id="servicesMapContainer">
+            <div class="map" v-for="pallet in pallets">
+                <div class="header">
+                    <div class="logo">
+                        <img src="../../resources/img/toro-logo-RGB-for-digital.png" alt="">
+                    </div>
+                    <div class="header-texts">
+                        <p>TORO COMPANY DE MEXICO (PLANTA III)</p>
+                        <P>MATERIALES DE SERVICIOS</P>
+                    </div>
+                </div>
+                <div class="map-data">
+                    <p>FECHA: {{ getDate() }}</p>
+                    <P>SERV: {{ serviceInfo.type.selected }}</P>
+                    <P>SERV: {{ serviceInfo.partNumber }}</P>
+                    <p>{{ serviceInfo.qty }} PCS</p>
+                </div>
+                <div class="map-materials">
+                    <div v-for="index in (26)" class="map-materials-box">
+                        <div class="map-materials-enum">{{ index }}</div>
+                        <table>
+                            <tr>
+                                <td>{{ pallet && pallet.partNumbers[index - 1] && pallet.partNumbers[index - 1].partNumber ? pallet.partNumbers[index - 1].partNumber : '' }}</td>
+                                <td class="map-material-pallets">{{ pallet && pallet.partNumbers[index - 1] && pallet.partNumbers[index - 1].partNumber ? 'X1' : '' }}</td>
+                                <td class="map-material-qty">{{ pallet && pallet.partNumbers[index - 1] && pallet.partNumbers[index - 1].qty ? pallet.partNumbers[index - 1].qty : '' }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="map-signature">
+                    <p>CARGADO POR: ______________________________</p>
+                    <P>SHIPMENT: ______________________________</P>
+                </div>
+            </div>
+            <!--
+            <div class="map">
+                <div class="header">
+                    <div class="logo">
+                        <img src="../../resources/img/toro-logo-RGB-for-digital.png" alt="">
+                    </div>
+                    <div class="header-texts">
+                        <p>TORO COMPANY DE MEXICO (PLANTA III)</p>
+                        <P>BODEGAS DE SERVICIOS</P>
+                    </div>
+                </div>
+                <div class="map-data">
+                    <p>FECHA: 04/25/2024</p>
+                    <P>SERV: SUB ASSY</P>
+                    <P>SERV: 121-5899</P>
+                    <p>75 PCS</p>
+                </div>
+                <div class="map-materials">
+                    <div v-for="value in (26)" class="map-materials-box">
+                        <div class="map-materials-enum">{{value}}</div>
+                        <table>
+                            <tr>
+                                <td>121-9101</td>
+                                <td class="map-material-pallets">X1</td>
+                                <td class="map-material-qty">1500</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="map-signature">
+                    <p>CARGADO POR: ______________________________</p>
+                    <P>SHIPMENT: ______________________________</P>
+                </div>
+            </div>
+            -->
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="../../modules/qrcode.min.js"></script>
+    <script src="javascript.js"></script>
+</body>
+</html>
