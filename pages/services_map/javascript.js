@@ -4,6 +4,7 @@ const app = Vue.createApp({
             scannerMode: true,
             referenceNumber: 1,
             serviceInfo: {
+                worker: '',
                 partNumber: '',
                 qty: '',
                 type: {
@@ -19,17 +20,17 @@ const app = Vue.createApp({
             pallets: [
                 {
                     partNumbers: [
-                        { partNumber: 'XXX-XXXX', qty: 1000 }
+                        { partNumber: '', qty: 0 }
                     ]
                 }
             ]
         }
     },
     created(){
-        console.log(this.$refs);
+        // console.log(this.$refs);
     },
     mounted(){
-        console.log(this.$refs);
+        // console.log(this.$refs);
     },
     computed: {
     },

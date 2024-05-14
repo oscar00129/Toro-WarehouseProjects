@@ -35,6 +35,10 @@
             <div class="control-panel">
                 <h1>Creador de mapas de bodegas de servicios</h1>
                 <div>
+                    <label for="txtName">Almacenista Encargado: </label>
+                    <input type="text" name="txtName" id="txtName" placeholder="Almacenista Encargado" v-model="serviceInfo.worker"/>
+                </div>
+                <div>
                     <label for="txtServPartNumber">Numero de Servicio:</label>
                     <input type="text" name="txtServPartNumber" id="txtServPartNumber" placeholder="Ejemplo: 123-4567" v-model="serviceInfo.partNumber">
                 </div>
@@ -78,6 +82,61 @@
         
         <div id="servicesMapContainer">
             <div class="map" v-for="pallet in pallets">
+                <div class="subassy">
+                    <div class="subassy-header bg-green" v-if="serviceInfo.type.selected === 'SUB ASSY'">
+                        SERVICIO SUBASSY
+                    </div>
+                    <div class="subassy-header bg-green" v-else-if="serviceInfo.type.selected === 'PICKUP'">
+                        SERVICIO PICKUP
+                    </div>
+                    <div class="subassy-header bg-yellow" v-else>
+                        PINTURA
+                    </div>
+                    <div class="subassy-basic-data">
+                        <div class="subassy-grid">ALMACENISTA</div>
+                        <div class="subassy-grid">{{ serviceInfo.worker }}</div>
+                        <div class="subassy-grid">FECHA</div>
+                        <div class="subassy-grid">{{getDate()}}</div>
+                    </div>
+                    <div class="subassy-service">
+                        <div class="subassy-grid">SERVICIO</div>
+                        <div class="subassy-grid font-26">{{ serviceInfo.partNumber }}</div>
+                        <div class="subassy-grid barcode-font">*{{ serviceInfo.partNumber }}*</div>
+                    </div>
+                    <div class="subassy-qty">
+                        <div class="subassy-grid">CANTIDAD</div>
+                        <div class="subassy-grid font-26">{{ serviceInfo.qty }}</div>
+                        <div class="subassy-grid barcode-font">*{{ serviceInfo.qty }}*</div>
+                    </div>
+                    <div class="subassy-att">
+                        <div class="subassy-grid">ATENCIÓN A</div>
+                        <div class="subassy-grid bg-green" v-if="serviceInfo.type.selected === 'SUB ASSY'">LUIS SANTILLANES</div>
+                        <div class="subassy-grid bg-green" v-else-if="serviceInfo.type.selected === 'PICKUP'">ADRIAN REYES - RAUL ESTUPIÑAN</div>
+                        <div class="subassy-grid bg-green" v-else>ADRIAN REYES</div>
+
+                        <div class="subassy-grid barcode-font" v-if="serviceInfo.type.selected === 'SUB ASSY'">*LUIS SANTILLANES*</div>
+                        <div class="subassy-grid barcode-font" v-else-if="serviceInfo.type.selected === 'PICKUP'">*ADRIAN REYES - RAUL ESTUPINAN*</div>
+                        <div class="subassy-grid barcode-font" v-else>*ADRIAN REYES*</div>
+                    </div>
+                    <div class="subassy-from">
+                        <div class="subassy-grid">DE</div>
+                        <div class="subassy-grid">J3</div>
+                        <div class="subassy-grid barcode-font">*J3*</div>
+                    </div>
+                    <div class="subassy-to">
+                        <div class="subassy-grid">A</div>
+                        <div class="subassy-grid">J2</div>
+                        <div class="subassy-grid barcode-font">*J2*</div>
+                    </div>
+                    <div class="subassy-numbers-qty">
+                        <div>NUMEROS</div>
+                        <div>CANTIDADES</div>
+                    </div>
+                    <div class="subassy-footer" v-if="serviceInfo.type.selected === 'SUB ASSY'">AREA DE SERVICIOS</div>
+                    <div class="subassy-footer" v-else-if="serviceInfo.type.selected === 'PICKUP'">ATN: RAUL ESTUPIÑAN EMBARQUES</div>
+                    <div class="subassy-footer" v-else>ATN: FRANCISCO GOBEA Y JUAN FRAGOSO</div>
+                </div>
+
                 <div class="header">
                     <div class="logo">
                         <img src="../../resources/img/toro-logo-RGB-for-digital.png" alt="">
@@ -106,45 +165,10 @@
                     </div>
                 </div>
                 <div class="map-signature">
-                    <p>CARGADO POR: ______________________________</p>
+                    <p>CARGADO POR: <u>{{serviceInfo.worker}}</u></p>
                     <P>SHIPMENT: ______________________________</P>
                 </div>
             </div>
-            <!--
-            <div class="map">
-                <div class="header">
-                    <div class="logo">
-                        <img src="../../resources/img/toro-logo-RGB-for-digital.png" alt="">
-                    </div>
-                    <div class="header-texts">
-                        <p>TORO COMPANY DE MEXICO (PLANTA III)</p>
-                        <P>BODEGAS DE SERVICIOS</P>
-                    </div>
-                </div>
-                <div class="map-data">
-                    <p>FECHA: 04/25/2024</p>
-                    <P>SERV: SUB ASSY</P>
-                    <P>SERV: 121-5899</P>
-                    <p>75 PCS</p>
-                </div>
-                <div class="map-materials">
-                    <div v-for="value in (26)" class="map-materials-box">
-                        <div class="map-materials-enum">{{value}}</div>
-                        <table>
-                            <tr>
-                                <td>121-9101</td>
-                                <td class="map-material-pallets">X1</td>
-                                <td class="map-material-qty">1500</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-                <div class="map-signature">
-                    <p>CARGADO POR: ______________________________</p>
-                    <P>SHIPMENT: ______________________________</P>
-                </div>
-            </div>
-            -->
         </div>
     </div>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>

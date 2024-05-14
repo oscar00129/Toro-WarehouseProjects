@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Free3pf9;
+    src:url("../../resources/fonts/3OF9_0.TTF");
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -117,7 +122,85 @@
     font-style: italic;
 }
 
-/**/
+/* IDENTIFICACION SUBASSY */
+
+.subassy {
+    page-break-after: always;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-print-color-adjust:exact !important;
+    print-color-adjust:exact !important;
+}
+
+.subassy-grid {
+    padding: .2rem;
+
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.subassy-header {
+    font-family: Calibri;
+    font-size: 96px;
+    font-weight: bold;
+    text-align: center;
+    border-color: black;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.subassy-basic-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.subassy-service, .subassy-qty, .subassy-att, .subassy-from, .subassy-to {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+}
+
+.subassy-numbers-qty {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+
+    font-family: Arial;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.subassy-footer {
+    font-family: Arial;
+    font-size: 78px;
+    font-weight: bold;
+    text-align: center;
+    background-color: rgb(217, 217, 217);
+}
+
+.font-26 {
+    font-size: 26px;
+}
+
+.bg-green {
+    background-color: rgb(146, 208, 80);
+}
+
+.bg-yellow {
+    background-color: rgb(255, 255, 0);
+}
+
+.barcode-font {
+    font-family: Free3pf9;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+/* MAPA DE BODEGAS */
 
 .map {
     page-break-after: always;
@@ -187,7 +270,7 @@ td {
 }
 
 
-input[type="text"], input[type="number"], select{
+input[type="text"], input[type="number"], select {
     border-color: black;
     border-width: 1px;
     border-style: solid;
